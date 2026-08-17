@@ -1,9 +1,12 @@
+package com.iprt.di.annotations;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.lang.annotation.ElementType;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.FIELD, ElementType.CONSTRUCTOR})
-public @interface Inject {
- }
+@Target(ElementType.TYPE)
+public @interface Injectable {
+  
+  }
