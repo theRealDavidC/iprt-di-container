@@ -20,7 +20,7 @@ public class ReflectionUtils {
     return result;
   }
   
- public static Constructor<?> getInjectableConstructor(Class<?> clazz) {
+ public static Constructor<?> getInjectableConstructor(Class<?> clazz) throws Exception {
   Constructor[] constructors = clazz.getDeclaredConstructors();
   
   for(Constructor classConstructor : constructors) {
@@ -31,13 +31,13 @@ public class ReflectionUtils {
    return clazz.getDeclaredConstructor();
     }
     
-  public static Object createInstance(Class<?> clazz, Object... args) {
+  public static Object createInstance(Class<?> clazz, Object... args) throws Exception {
    Constructor<?> constructor = getInjectableConstructor(clazz);
    constructor.setAccessible(true);
    return constructor.newInstance(args);
    }
    
-  public static void injectFields(Object instance, DIContainer container) {
+  public static void injectFields(Object instance, DIContainer container) throws Exception {
     List<Field> fields = getInjectableFields(instance.getClass());
     
     for(Field field : fields) {
